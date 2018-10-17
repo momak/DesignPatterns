@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Web.Factory.AbstractFactory;
 using Web.Factory.FactoryMethod;
 using Web.Managers;
 using Web.Models;
@@ -16,6 +17,28 @@ namespace Web.Controllers
     public class EmployeesController : BaseController
     {
         private EmployeePortalEntities db = new EmployeePortalEntities();
+
+        [HttpGet]
+        public ActionResult BuildSystem(int? employeeId)
+        {
+            Employee employee = db.Employees.Find(employeeId);
+            return View(employee);
+        }
+
+        [HttpPost]
+        public ActionResult BuildSystem(int employeeID, string RAM, string HDDSize)
+        {
+            Employee employee = db.Employees.Find(employeeID);
+            ComputerSystem computerSystem = new ComputerSystem(RAM, HDDSize);
+
+            employee.SystemConfigurationDetails = computerSystem.Build();
+
+            db.Entry(employee).State = EntityState.Modified;
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
+
+        }
 
         // GET: Employees
         public async Task<ActionResult> Index()
@@ -57,6 +80,11 @@ namespace Web.Controllers
             {
                 BaseEmployeeFactory empFactory = new EmployeeManagerFactory().CreateFactory(employee);
                 empFactory.ApplySalary();
+
+                IComputerFactory factory = new EmployeeSystemFactory().Create(employee);
+                EmployeeSystemManager manager = new EmployeeSystemManager(factory);
+                employee.ComputerDetail = manager.GetSystemDetails();
+
 
                 db.Employees.Add(employee);
                 await db.SaveChangesAsync();

@@ -155,9 +155,28 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="ComputerSystem.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Factory\AbstractFactory\ConcreteProduct\Dell.cs" />
+    <Compile Include="Factory\AbstractFactory\ConcreteFactory\DellFactory.cs" />
+    <Compile Include="Factory\AbstractFactory\ConcreteFactory\DellLaptopFactory.cs" />
+    <Compile Include="Factory\AbstractFactory\ConcreteProduct\Desktop.cs" />
+    <Compile Include="Factory\AbstractFactory\ConcreteFactory\EmployeeSystemFactory.cs" />
+    <Compile Include="Factory\AbstractFactory\Client\EmployeeSystemManager.cs" />
+    <Compile Include="Factory\AbstractFactory\Enumerations.cs" />
+    <Compile Include="Factory\AbstractFactory\ConcreteProduct\I3.cs" />
+    <Compile Include="Factory\AbstractFactory\ConcreteProduct\I5.cs" />
+    <Compile Include="Factory\AbstractFactory\ConcreteProduct\I7.cs" />
+    <Compile Include="Factory\AbstractFactory\AbstractProduct\IBrand.cs" />
+    <Compile Include="Factory\AbstractFactory\AbstractInterface\IComputerFactory.cs" />
+    <Compile Include="Factory\AbstractFactory\AbstractProduct\IProcessor.cs" />
+    <Compile Include="Factory\AbstractFactory\AbstractProduct\ISystemType.cs" />
+    <Compile Include="Factory\AbstractFactory\ConcreteProduct\Laptop.cs" />
+    <Compile Include="Factory\AbstractFactory\ConcreteProduct\MAC.cs" />
+    <Compile Include="Factory\AbstractFactory\ConcreteFactory\MACFactory.cs" />
+    <Compile Include="Factory\AbstractFactory\ConcreteFactory\MACLaptopFactory.cs" />
     <Compile Include="Factory\EmployeeManagerFactory.cs" />
     <Compile Include="Factory\FactoryMethod\BaseEmployeeFactory.cs" />
     <Compile Include="Factory\FactoryMethod\ContractEmployeeFactory.cs" />
@@ -262,6 +281,7 @@
     <Content Include="Views\Employees\Details.cshtml" />
     <Content Include="Views\Employees\Edit.cshtml" />
     <Content Include="Views\Employees\Index.cshtml" />
+    <Content Include="Views\Employees\BuildSystem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Logger\Logger.csproj">

@@ -1,0 +1,54 @@
+﻿@model Web.Models.Employee
+@{
+    ViewBag.Title = "BuildSystem";
+}
+
+<h2>BuildSystem</h2>
+
+@using (Html.BeginForm("BuildSystem", "Employees", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>System Configuration</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.Hidden("employeeID", this.Model.ToString())
+        <div class="form-group">
+            @Html.Label("Memory", htmlAttributes: new { @class = "control-label" })
+            <div class="col-md-10">
+                @Html.DropDownList("RAM", new List<SelectListItem>()
+                {
+                    new SelectListItem(){Text="Select", Value="Select"},
+                    new SelectListItem(){Text="8GB", Value="8GB"},
+                    new SelectListItem(){Text="16GB", Value="16GB"},
+                    new SelectListItem(){Text="32GB", Value="32GB"}
+                }, htmlAttributes:new {@class="form-control"})
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Drive", htmlAttributes: new { @class = "control-label" })
+            <div class="col-md-10">
+                @Html.DropDownList("HDDSize", new List<SelectListItem>()
+                {
+                    new SelectListItem(){Text="Select", Value="Select"},
+                    new SelectListItem(){Text="500GB", Value="500GB"},
+                    new SelectListItem(){Text="1TB", Value="1TB"},
+                }, htmlAttributes:new {@class="form-control"})
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}

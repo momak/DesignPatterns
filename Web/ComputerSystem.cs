@@ -1,0 +1,32 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Web;
+
+namespace Web
+{
+    public class ComputerSystem
+    {
+        private string _RAM;
+        private string _HDDSize;
+
+        public ComputerSystem()
+        {
+        }
+        public ComputerSystem(string RAM, string HDD)
+        {
+            _RAM = RAM;
+            _HDDSize = HDD;
+        }
+
+        public string Build()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append($"RAM: {_RAM},");
+            sb.Append($"HDD Size: {_HDDSize},");
+
+            return sb.ToString();
+        }
+    }
+}
