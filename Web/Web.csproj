@@ -155,7 +155,11 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="ComputerSystem.cs" />
+    <Compile Include="Builder\ConcreteBuilder\DesktopBuilder.cs" />
+    <Compile Include="Builder\ConcreteBuilder\LaptopBuilder.cs" />
+    <Compile Include="Builder\Director\ConfigurationBuilder.cs" />
+    <Compile Include="Builder\IBuilder\ISystemBuilder.cs" />
+    <Compile Include="Builder\Product\ComputerSystem.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -282,6 +286,8 @@
     <Content Include="Views\Employees\Edit.cshtml" />
     <Content Include="Views\Employees\Index.cshtml" />
     <Content Include="Views\Employees\BuildSystem.cshtml" />
+    <Content Include="Views\Employees\BuildLaptop.cshtml" />
+    <Content Include="Views\Employees\BuildDesktop.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Logger\Logger.csproj">
